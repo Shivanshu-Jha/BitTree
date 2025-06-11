@@ -1,6 +1,8 @@
 import Link from "next/link";
+
 import clientPromise from "@/lib/mongodb";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 export default async function Page({ params }) {
     const handle = (await params).handle;
@@ -18,7 +20,7 @@ export default async function Page({ params }) {
 
     return <div className="flex items-start justify-center py-10 min-h-screen bg-[#4c113a]">
         {item && <div className="photo flex flex-col justify-center items-center ">
-            <Link href={item.pic}><img width={200} height={200} className="rounded-t-full rounded-lg shadow-xl transition delay-100 duration-300 transition:ease-in-out  hover:scale-110" src={item.pic} alt="profile picture" /></Link>
+            <Link href={item.pic}><Image width={200} height={200} className="rounded-t-full rounded-lg shadow-xl transition delay-100 duration-300 transition:ease-in-out  hover:scale-110" src={item.pic} alt="profile picture" /></Link>
             <span className="font-bold text-2xl text-[#A7C2CC]">@{item.handle}</span>
             <span className="desc w-80 text-center my-3 text-xl underline text-[#c69674] font-semibold">Your Link Tree is ready!</span>
             <div className="links">

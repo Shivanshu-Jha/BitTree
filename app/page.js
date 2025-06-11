@@ -1,7 +1,8 @@
 "use client"
-import Image from "next/image";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Home() {
 
@@ -41,13 +42,13 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col justify-center items-center mr-[10vw]">
-          <img src="/home.png" alt="homePageImage" />
+          <Image width={700} height={700} src="/home.png" alt="homePageImage" />
 
         </div>
       </section>
       <section className="bg-[#e9c0e9] min-h-[100vh] grid grid-cols-2">
         <div>
-          <Image className="h-full absolute left-36 object-contain" src="/section2.png" alt="homePageImage2" width={500} height={500} />
+          <Image className="h-full absolute left-36 object-contain" src="/section2.png" alt="homePageImage2" width={400} height={400}  />
         </div>
         <div className="flex flex-col justify-center ml-[5vw] gap-4">
           <p className="text-[#502274] font-bold font-serif text-7xl pr-5">

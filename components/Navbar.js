@@ -1,6 +1,8 @@
 "use client"
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+
 
 import { usePathname } from 'next/navigation'
 
@@ -16,7 +18,7 @@ const Navbar = () => {
     {showNavbar && <nav className='bg-white flex justify-between w-[80vw] fixed top-10 right-[10vw] px-7 py-3 rounded-full'>
       <div className="logo flex gap-8 items-center">
         <Link href={"/"}>
-          <img className='h-8' loading="eager" src="https://cdn.prod.website-files.com/666255f7f2126f4e8cec6f8f/66634daccb34e6d65a41c76d_download.svg" alt=""></img>
+          <Image width={200} height={200} className='h-8' loading="eager" src="https://cdn.prod.website-files.com/666255f7f2126f4e8cec6f8f/66634daccb34e6d65a41c76d_download.svg" alt=""></Image>
         </Link>
 
         <ul className='flex gap-10 text-gray-500 font-semibold px-5 text-md'>

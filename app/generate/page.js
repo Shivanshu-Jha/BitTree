@@ -1,16 +1,28 @@
-"use client"
-import React, { useState } from 'react'
+"use client";
+import React, { Suspense, useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useSearchParams } from 'next/navigation'
+import Image from 'next/image';
 
-const Generate = () => {
+export const dynamic = "force-dynamic";
+
+const GenerateContent = () => {
+
 
     const searchParams = useSearchParams()
 
+
     const [links, setLinks] = useState([{ link: "", linktext: "" }])
-    const [handle, sethandle] = useState(searchParams.get("handle"))
+    // const [handle, sethandle] = useState(searchParams.get("handle"))
+    const [handle, sethandle] = useState("")
     const [pic, setpic] = useState("")
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            sethandle(searchParams.get("handle"));
+        }
+    }, [searchParams]);
 
     const handleChange = (index, link, linktext) => {
         setLinks((initialLinks) => {
@@ -25,7 +37,7 @@ const Generate = () => {
     }
 
     const addLink = () => {
-        setLinks(links.concat({ link: "", linktext: "" }))
+        setLinks(links.concat([{ link: "", linktext: "" }]))
     }
 
 
@@ -103,7 +115,7 @@ const Generate = () => {
                 </div>
             </div>
             <div className="col2 w-full h-screen bg-[#e9c0e9]">
-                <img className='h-full object-contain' src="/generate.png" alt="Generate your links" />
+                <Image width={500} height={500} className='h-full object-contain' src="/generate.png" alt="Generate your links" />
             </div>
 
             <ToastContainer />
@@ -112,4 +124,15 @@ const Generate = () => {
     )
 }
 
+const Generate = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <GenerateContent />
+        </Suspense>
+    );
+};
+
 export default Generate
+
+
+
